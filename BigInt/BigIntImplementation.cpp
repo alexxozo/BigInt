@@ -1,6 +1,5 @@
 #include "BigInt.h"
 #include<string.h>
-using namespace std;
 
 ///---Constructors Destructor---///
 BigInt::BigInt() {
