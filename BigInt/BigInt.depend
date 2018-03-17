@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1521290384 source:c:\users\alex\desktop\big_int(varianta array int)\bigint\main.cpp
+	<iostream>
+	"BigInt.h"
+
+1521287282 c:\users\alex\desktop\big_int(varianta array int)\bigint\bigint.h
+	<iostream>
+
+1521288932 source:c:\users\alex\desktop\big_int(varianta array int)\bigint\bigintimplementation.cpp
+	"BigInt.h"
+	<string.h>
+
