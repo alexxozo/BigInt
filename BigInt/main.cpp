@@ -11,8 +11,8 @@ int main()
     /*cout<<"Introdu doua numere mari:";
     cin>>a;
     cin>>b;*/
-    a = "123123134534532";
-    b = "567567345344";
+    a = "123123134534532546564";
+    b = "56756734534445645645645";
     cout<<"Suma:"<<a+b;
     cout<<"Diferenta:"<<a-b;
     cout<<"Inmultire:"<<a*b;

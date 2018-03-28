@@ -29,7 +29,7 @@ BigInt::BigInt(long long int x) {
     sign = (x < 0) ? -1 : 0;
     //Daca x este negativ atunci il facem pozitiv pt a memora cifrele lui in vector
     x = (sign == -1) ? -x : x;
-    number = new short[dim];
+    number = new short[dim + 1];
     for(int i = 0; i < dim; i++) {
         number[i] = x % 10;
         x /= 10;
@@ -40,7 +40,7 @@ BigInt::BigInt(char* s) {
     //Aflam semnul lui s si dimensiunea
     sign = (s[0] == '-') ? -1 : 0;
     dim = strlen(s) + sign;
-    number = new short[dim];
+    number = new short[dim + 1];
     //Indexul de la care incepem sa copiem cifrele
     //o sa fie 0 sau 1, daca avem nr negativ incepem de la pozitia 1
     //pentru a sari peste "-"
@@ -54,7 +54,7 @@ BigInt::BigInt(const BigInt &b) {
     //Copiem valorile lui b in (*this)
     sign = b.sign;
     dim = b.dim;
-    number = new short[dim];
+    number = new short[dim + 1];
     for(int i = 0; i < dim; i++) {
         number[i] = b.number[i];
     }
@@ -100,14 +100,11 @@ BigInt add(BigInt a, BigInt b) {
     if(carry > 0) {
         short *temp = new short[bigger.dim+1];
 
-        ///memcpy(temp, bigger.number, bigger.dim * sizeof(short) + 1);  ///Are uneori problema in codeblocks
-
         for(int i = 0; i < bigger.dim; i++) {
             temp[i] = bigger.number[i];
         }
 
         temp[bigger.dim++] = carry;
-        delete [] bigger.number;
         bigger.number = temp;
     }
 
@@ -130,6 +127,10 @@ BigInt subtract(BigInt a, BigInt b) {
     //Alocam memorie pentru vectorul in care o sa emmoram rezultatul
     result.number = new short[bigger.dim];
     result.dim = bigger.dim;
+
+    for(int i = 0; i < result.dim; i++) {
+        result.number[i] = 0;
+    }
 
     //Parcurgem vectorii pana la dimensiunea celui mai mic
     for(int i = 0; i < smaller.dim; i++) {
